@@ -25,9 +25,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (contract) {
-      setCounter(await contract.methods.getCounter().call());
+    const setCounterItem = async () => {
+      if (contract) {
+        setCounter(await contract.methods.getCounter().call());
+      }
     }
+
+    setCounterItem();
   }, [contract]);
 
   const increment = async () => {
